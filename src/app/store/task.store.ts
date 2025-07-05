@@ -25,6 +25,13 @@ export const TaskStore = signalStore(
     addTask: (title: string) => {
       const newTask = { id: Date.now(), title, status: 'pending' };
       patchState(store, {tasks: [...store.tasks(), newTask]})
+    },
+    deleteTask: () => {
+      const deleteTask = store.tasks();
+      if (deleteTask.length > 0) {
+        const updatedTasks = deleteTask.slice(0, -1); // Remove the last task
+        patchState(store, {tasks: updatedTasks});
+      }
     }
   })),
   withHooks(store => {
