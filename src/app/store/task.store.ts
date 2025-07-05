@@ -29,7 +29,7 @@ export const TaskStore = signalStore(
     deleteTask: () => {
       const deleteTask = store.tasks();
       if (deleteTask.length > 0) {
-        const updatedTasks = deleteTask.slice(0, -1); // Remove the last task
+        const updatedTasks = deleteTask.slice(0, -1);
         patchState(store, {tasks: updatedTasks});
       }
     }
