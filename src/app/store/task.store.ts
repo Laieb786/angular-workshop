@@ -22,15 +22,16 @@ export const TaskStore = signalStore(
       const data = taskService.getInitialTasks();
       patchState(store, {tasks: data})
     },
+
     addTask: (title: string) => {
       const newTask = { id: Date.now(), title, status: 'pending' };
       patchState(store, {tasks: [...store.tasks(), newTask]})
     },
+
     deleteTask: () => {
       const deleteTask = store.tasks();
       if (deleteTask.length > 0) {
-        const updatedTasks = deleteTask.slice(0, -1);
-        patchState(store, {tasks: updatedTasks});
+        patchState(store, {tasks: deleteTask.slice(0, -1)});
       }
     }
   })),
