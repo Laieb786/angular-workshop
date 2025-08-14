@@ -1,3 +1,11 @@
-import {event} from "@ngrx/signals/events";
+import { event } from "@ngrx/signals/events";
+import { eventGroup } from "@ngrx/signals/events";
 
-export const taskAdded = event('taskAdded');
+export const taskEvents = eventGroup({
+    source: 'task',
+    events: {
+        taskAdded: event('taskAdded'),
+        taskDeleted: event('taskDeleted')
+    }
+})
+export const apiDataReceived = event('apiDataReceived');
